@@ -5,9 +5,22 @@
   </head>
   
   <body>
-    <img src={{ hdurl }} height="250" width="250">
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+    
+    <form method="POST" action="/">
+      <input type="text" name="keyword" required><br><br>
+      <input type="submit" value="Search"> <br> <br>
+    </form>
     <br>
-    {{explanation}}
+    
+    {% for title in display %}
+    <h3>{{title}}</h3>
+    <h4>{{display[title]}}</h4>
+    <br>
+    {% endfor %}
     
   </body>
 </html>
